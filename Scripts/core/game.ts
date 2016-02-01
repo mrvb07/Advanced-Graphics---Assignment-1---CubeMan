@@ -242,9 +242,9 @@ function onResize(): void {
 }
 
 function addControl(controlObject: Control): void {
-    gui.add(controlObject, 'rotationSpeedx',0.05);
-    gui.add(controlObject, 'rotationSpeedy',-0.5,0.05);
-    gui.add(controlObject, 'rotationSpeedz',0.05);
+    gui.add(controlObject, 'rotationSpeedx',-0.05,0.05);
+    gui.add(controlObject, 'rotationSpeedy',-0.05,0.05);
+    gui.add(controlObject, 'rotationSpeedz',-0.05,0.05);
 }
 
 function addStatsObject() {

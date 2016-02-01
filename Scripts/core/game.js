@@ -200,9 +200,9 @@ function onResize() {
     renderer.setSize(CScreen.WIDTH, CScreen.HEIGHT);
 }
 function addControl(controlObject) {
-    gui.add(controlObject, 'rotationSpeedx', 0.5);
-    gui.add(controlObject, 'rotationSpeedy', -0.5, 0.5);
-    gui.add(controlObject, 'rotationSpeedz', 0.5);
+    gui.add(controlObject, 'rotationSpeedx', 0.05);
+    gui.add(controlObject, 'rotationSpeedy', -0.5, 0.05);
+    gui.add(controlObject, 'rotationSpeedz', 0.05);
 }
 function addStatsObject() {
     stats = new Stats();

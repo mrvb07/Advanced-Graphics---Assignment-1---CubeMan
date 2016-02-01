@@ -88,7 +88,7 @@ function init() {
     plane = new gameObject(
         new PlaneGeometry(20, 20, 1, 1),
         new LambertMaterial({ color: 0xe79b61 }),
-        0, 0, 0);
+        0, -5, 0);
 
     plane.rotation.x = -0.5 * Math.PI;
 
@@ -110,7 +110,7 @@ function init() {
     cube.castShadow = true;
     cube.receiveShadow = true;
     cube.position.x = 0.125;
-    cube.position.y = 9.73;
+    cube.position.y = 4.73;
     cube.position.z = 0.04;
     group.add(cube);
     // scene.add(cube);
@@ -121,7 +121,7 @@ function init() {
     cube1.castShadow = true;
     cube1.receiveShadow = true;
     cube1.position.x = -0.02;
-    cube1.position.y = 8.3;
+    cube1.position.y = 3.3;
     cube1.position.z = 0.045;
     group.add(cube1);
     // scene.add(cube1);
@@ -133,7 +133,7 @@ function init() {
     cube2.castShadow = true;
     cube2.receiveShadow = true;
     cube2.position.x = 0.06;
-    cube2.position.y = 5.5;
+    cube2.position.y = 0.5;
     cube2.position.z = 0.01;
     group.add(cube2);
     // scene.add(cube2);
@@ -145,7 +145,7 @@ function init() {
     cube3.castShadow = true;
     cube3.receiveShadow = true;
     cube3.position.x = -0.21;
-    cube3.position.y = 7.6;
+    cube3.position.y = 2.6;
     cube3.position.z = -3.71;
     group.add(cube3);
     // scene.add(cube3);
@@ -155,7 +155,7 @@ function init() {
     cube4.castShadow = true;
     cube4.receiveShadow = true;
     cube4.position.x = -0.21;
-    cube4.position.y = 7.6;
+    cube4.position.y = 2.6;
     cube4.position.z = 3.71;
     group.add(cube4);
     // scene.add(cube4);
@@ -166,7 +166,7 @@ function init() {
     cube5.castShadow = true;
     cube5.receiveShadow = true;
     cube5.position.x = -0.16;
-    cube5.position.y = 1.5;
+    cube5.position.y = -3.5;
     cube5.position.z = -1.0;
     group.add(cube5);
     // scene.add(cube5);
@@ -176,7 +176,7 @@ function init() {
     cube6.castShadow = true;
     cube6.receiveShadow = true;
     cube6.position.x = -0.16;
-    cube6.position.y = 1.5;
+    cube6.position.y = -3.5;
     cube6.position.z = 1.0;
     group.add(cube6);
     // scene.add(cube6);
@@ -187,7 +187,7 @@ function init() {
     cube7.castShadow = true;
     cube7.receiveShadow = true;
     cube7.position.x = 0.15;
-    cube7.position.y = 0.25;
+    cube7.position.y = -4.75;
     cube7.position.z = -1.0;
     group.add(cube7);
     // scene.add(cube7);
@@ -197,7 +197,7 @@ function init() {
     cube8.castShadow = true;
     cube8.receiveShadow = true;
     cube8.position.x = 0.15;
-    cube8.position.y = 0.25;
+    cube8.position.y = -4.75;
     cube8.position.z = 1.0;
     group.add(cube8);
     // scene.add(cube8);
@@ -212,7 +212,7 @@ function init() {
 	
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
-    spotLight.position.set(5.6, 23.1, 5.4);
+    spotLight.position.set(5.6, 18.1, 5.4);
     spotLight.rotation.set(-0.8, 42.7, 19.5);
     spotLight.castShadow = true;
     scene.add(spotLight);
@@ -294,8 +294,8 @@ function setupCamera(): void {
     camera = new PerspectiveCamera(45, config.Screen.RATIO, 0.1, 1000);
     //camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.x = 31.2;
-    camera.position.y = 13.9;
+    camera.position.y = 8.9;
     camera.position.z = -6.68;
-    camera.lookAt(new Vector3(0, 0, 0));
+    camera.lookAt(new Vector3(0, -1, 0));
     console.log("Finished setting up Camera...");
 }

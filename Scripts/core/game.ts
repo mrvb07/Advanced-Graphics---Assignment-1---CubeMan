@@ -8,14 +8,6 @@ import Renderer = THREE.WebGLRenderer;
 import PerspectiveCamera = THREE.PerspectiveCamera;
 import BoxGeometry = THREE.BoxGeometry;
 import CubeGeometry = THREE.CubeGeometry;
-import CubeGeometry1 = THREE.CubeGeometry;
-import CubeGeometry2 = THREE.CubeGeometry;
-import CubeGeometry3 = THREE.CubeGeometry;
-import CubeGeometry4 = THREE.CubeGeometry;
-import CubeGeometry5 = THREE.CubeGeometry;
-import CubeGeometry6 = THREE.CubeGeometry;
-import CubeGeometry7 = THREE.CubeGeometry;
-import CubeGeometry8 = THREE.CubeGeometry;
 import PlaneGeometry = THREE.PlaneGeometry;
 import SphereGeometry = THREE.SphereGeometry;
 import Geometry = THREE.Geometry;
@@ -108,16 +100,15 @@ function init() {
     
     scene.add(cube);
     
-    cubeMaterial = new LambertMaterial({color:0x00ff00});
-    cubeGeometry = new CubeGeometry(2.036, 2.315, 2);
-    cube = new Mesh(cubeGeometry, cubeMaterial);
-    cube.castShadow = true;
-    cube.receiveShadow = true;
-    cube.position.x = 0.125;
-    cube.position.y = 9.73;
-    cube.position.z = 0.04;
+    cubeGeometry1 = new CubeGeometry(1, 1, 1);
+    cube1 = new Mesh(cubeGeometry1, cubeMaterial);
+    cube1.castShadow = true;
+    cube1.receiveShadow = true;
+    cube1.position.x = -0.02;
+    cube1.position.y = 8.3;
+    cube1.position.z = 0.045;
     
-    scene.add(cube);
+    scene.add(cube1);
     console.log("Added Cube Primitive to scene...");
     
     

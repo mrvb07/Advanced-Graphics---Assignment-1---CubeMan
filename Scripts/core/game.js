@@ -57,7 +57,11 @@ var cubeGeometry5;
 var cubeGeometry6;
 var cubeGeometry7;
 var cubeGeometry8;
-var cubeMaterial;
+var cubeMaterialSkin;
+var cubeMaterialBody;
+var cubeMaterialLegs;
+var cubeMaterialFeet;
+var group = new THREE.Object3D();
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -68,90 +72,104 @@ function init() {
     scene.add(axes);
     console.log("Added Axis Helper to scene...");
     //Add a Plane to the Scene
-    plane = new gameObject(new PlaneGeometry(16, 16, 1, 1), new LambertMaterial({ color: 0xe79b61 }), 0, 0, 0);
+    plane = new gameObject(new PlaneGeometry(20, 20, 1, 1), new LambertMaterial({ color: 0xe79b61 }), 0, 0, 0);
     plane.rotation.x = -0.5 * Math.PI;
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     //Add a Cubes to the Scene
+    cubeMaterialSkin = new LambertMaterial({ color: 0x90EE90 });
+    cubeMaterialBody = new LambertMaterial({ color: 0x9ACD32 });
+    cubeMaterialLegs = new LambertMaterial({ color: 0x000000 });
+    cubeMaterialFeet = new LambertMaterial({ color: 0x614126 });
     //Adding Head
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(2.036, 2.315, 2);
-    cube = new Mesh(cubeGeometry, cubeMaterial);
+    cube = new Mesh(cubeGeometry, cubeMaterialSkin);
     cube.castShadow = true;
     cube.receiveShadow = true;
     cube.position.x = 0.125;
     cube.position.y = 9.73;
     cube.position.z = 0.04;
-    scene.add(cube);
+    group.add(cube);
+    // scene.add(cube);
     //Adding Neck
     cubeGeometry1 = new CubeGeometry(1, 1, 1);
-    cube1 = new Mesh(cubeGeometry1, cubeMaterial);
+    cube1 = new Mesh(cubeGeometry1, cubeMaterialSkin);
     cube1.castShadow = true;
     cube1.receiveShadow = true;
     cube1.position.x = -0.02;
     cube1.position.y = 8.3;
     cube1.position.z = 0.045;
-    scene.add(cube1);
+    group.add(cube1);
+    // scene.add(cube1);
     //Adding Body
     cubeGeometry2 = new CubeGeometry(1.7, 5, 4);
-    cube2 = new Mesh(cubeGeometry2, cubeMaterial);
+    cube2 = new Mesh(cubeGeometry2, cubeMaterialBody);
     cube2.castShadow = true;
     cube2.receiveShadow = true;
     cube2.position.x = 0.06;
     cube2.position.y = 5.5;
     cube2.position.z = 0.01;
-    scene.add(cube2);
+    group.add(cube2);
+    // scene.add(cube2);
     //Adding left and right Arms
     cubeGeometry3 = new CubeGeometry(1.2, 0.8, 3.5);
-    cube3 = new Mesh(cubeGeometry3, cubeMaterial);
+    cube3 = new Mesh(cubeGeometry3, cubeMaterialSkin);
     cube3.castShadow = true;
     cube3.receiveShadow = true;
     cube3.position.x = -0.21;
     cube3.position.y = 7.6;
     cube3.position.z = -3.71;
-    scene.add(cube3);
+    group.add(cube3);
+    // scene.add(cube3);
     cubeGeometry4 = new CubeGeometry(1.2, 0.8, 3.5);
-    cube4 = new Mesh(cubeGeometry4, cubeMaterial);
+    cube4 = new Mesh(cubeGeometry4, cubeMaterialSkin);
     cube4.castShadow = true;
     cube4.receiveShadow = true;
     cube4.position.x = -0.21;
     cube4.position.y = 7.6;
     cube4.position.z = 3.71;
-    scene.add(cube4);
+    group.add(cube4);
+    // scene.add(cube4);
     //Adding Legs
     cubeGeometry5 = new CubeGeometry(1, 3, 1);
-    cube5 = new Mesh(cubeGeometry5, cubeMaterial);
+    cube5 = new Mesh(cubeGeometry5, cubeMaterialLegs);
     cube5.castShadow = true;
     cube5.receiveShadow = true;
     cube5.position.x = -0.16;
     cube5.position.y = 1.5;
     cube5.position.z = -1.0;
-    scene.add(cube5);
+    group.add(cube5);
+    // scene.add(cube5);
     cubeGeometry6 = new CubeGeometry(1, 3, 1);
-    cube6 = new Mesh(cubeGeometry6, cubeMaterial);
+    cube6 = new Mesh(cubeGeometry6, cubeMaterialLegs);
     cube6.castShadow = true;
     cube6.receiveShadow = true;
     cube6.position.x = -0.16;
     cube6.position.y = 1.5;
     cube6.position.z = 1.0;
-    scene.add(cube6);
+    group.add(cube6);
+    // scene.add(cube6);
+    //Adding Feet
     cubeGeometry7 = new CubeGeometry(1.6, 0.5, 1);
-    cube7 = new Mesh(cubeGeometry7, cubeMaterial);
+    cube7 = new Mesh(cubeGeometry7, cubeMaterialFeet);
     cube7.castShadow = true;
     cube7.receiveShadow = true;
     cube7.position.x = 0.15;
     cube7.position.y = 0.25;
     cube7.position.z = -1.0;
-    scene.add(cube7);
+    group.add(cube7);
+    // scene.add(cube7);
     cubeGeometry8 = new CubeGeometry(1.6, 0.5, 1);
-    cube8 = new Mesh(cubeGeometry8, cubeMaterial);
+    cube8 = new Mesh(cubeGeometry8, cubeMaterialFeet);
     cube8.castShadow = true;
     cube8.receiveShadow = true;
     cube8.position.x = 0.15;
     cube8.position.y = 0.25;
     cube8.position.z = 1.0;
-    scene.add(cube8);
-    console.log("Added Cube Primitive to scene...");
+    group.add(cube8);
+    // scene.add(cube8);
+    scene.add(group);
+    console.log("Added Group to scene...");
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x090909);
     scene.add(ambientLight);
@@ -204,6 +222,7 @@ function gameLoop() {
     // cube6.rotation.y += control.rotationSpeed;
     // cube7.rotation.y += control.rotationSpeed;
     // cube8.rotation.y += control.rotationSpeed;
+    group.rotation.y += control.rotationSpeed;
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
     // render the scene

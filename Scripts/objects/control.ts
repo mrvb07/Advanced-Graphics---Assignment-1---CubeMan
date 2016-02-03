@@ -4,14 +4,24 @@ module objects {
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     export class Control { 
         //PUBLIC INSTANCE VARIABLES +++++++++++++++++++++++++++
-        public rotationSpeedx:number;
-        public rotationSpeedy:number;
-        public rotationSpeedz:number;
+        public RotationXaxis:number;
+        public RotationYaxis:number;
+        public RotationZaxis:number;
+        public BodyColor:number;
+        public UpperColor:number;
+        public LowerColor:number;
+        public FeetColor:number;
+       // public color:number;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        constructor(rotationSpeed:number) {
-           this.rotationSpeedx = rotationSpeed;
-           this.rotationSpeedy = rotationSpeed;
-           this.rotationSpeedz = rotationSpeed;
+        constructor(RotationXaxis:number, RotationYaxis:number, RotationZaxis:number, BodyColor:number, UpperColor:number, LowerColor:number, FeetColor:number) {
+           this.RotationXaxis = RotationXaxis;
+           this.RotationYaxis = RotationYaxis;
+           this.RotationZaxis = RotationZaxis;
+           this.BodyColor = BodyColor;
+           this.UpperColor = UpperColor;
+           this.LowerColor = LowerColor;
+           this.FeetColor = FeetColor;
+         //  this.color = color;
         }
         
         //PUBLIC METHODS +++++++++++++++++++++++++++++++++++++++

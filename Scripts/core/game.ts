@@ -28,7 +28,6 @@ import Face3 = THREE.Face3;
 import Point = objects.Point;
 import CScreen = config.Screen;
 
-
 //Custom Game Objects
 import gameObject = objects.gameObject;
 
@@ -86,9 +85,9 @@ function init() {
     
     //Add a Plane to the Scene
     plane = new gameObject(
-        new PlaneGeometry(20, 20, 1, 1),
-        new LambertMaterial({ color: 0xe79b61 }),
-        0, -5, 0);
+        new PlaneGeometry(40, 40, 1, 1),
+        new LambertMaterial({ color: 0xABE79F }),
+        -2.5, -5.35, 0);
 
     plane.rotation.x = -0.5 * Math.PI;
 
@@ -187,7 +186,7 @@ function init() {
     cube7.castShadow = true;
     cube7.receiveShadow = true;
     cube7.position.x = 0.15;
-    cube7.position.y = -4.75;
+    cube7.position.y = -4.95;
     cube7.position.z = -1.0;
     group.add(cube7);
     // scene.add(cube7);
@@ -197,7 +196,7 @@ function init() {
     cube8.castShadow = true;
     cube8.receiveShadow = true;
     cube8.position.x = 0.15;
-    cube8.position.y = -4.75;
+    cube8.position.y = -4.95;
     cube8.position.z = 1.0;
     group.add(cube8);
     // scene.add(cube8);
@@ -206,21 +205,22 @@ function init() {
     
     
     // Add an AmbientLight to the scene
-    ambientLight = new AmbientLight(0x090909);
+    ambientLight = new AmbientLight(0x444444);
     scene.add(ambientLight);
     console.log("Added an Ambient Light to Scene");
 	
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
-    spotLight.position.set(5.6, 18.1, 5.4);
-    spotLight.rotation.set(-0.8, 42.7, 19.5);
+    spotLight.position.set(21, 70, 19);
+    //spotLight.rotation.set(37.261, 106.936, 3.164);
+    spotLight.lookAt(new Vector3(0, 0, 0));
     spotLight.castShadow = true;
     scene.add(spotLight);
     console.log("Added a SpotLight Light to Scene");
     
     // add controls
     gui = new GUI();
-    control = new Control(0.05);
+    control = new Control(0.001,0.001,0.001,cubeMaterialSkin.color.getHex(),cubeMaterialBody.color.getHex(),cubeMaterialLegs.color.getHex(),cubeMaterialFeet.color.getHex());
     addControl(control);
 
     // Add framerate stats
@@ -242,9 +242,13 @@ function onResize(): void {
 }
 
 function addControl(controlObject: Control): void {
-    gui.add(controlObject, 'rotationSpeedx',-0.05,0.05);
-    gui.add(controlObject, 'rotationSpeedy',-0.05,0.05);
-    gui.add(controlObject, 'rotationSpeedz',-0.05,0.05);
+    gui.add(controlObject, 'RotationXaxis',-0.05,0.05);
+    gui.add(controlObject, 'RotationYaxis',-0.05,0.05);
+    gui.add(controlObject, 'RotationZaxis',-0.05,0.05);
+    gui.addColor(controlObject,'BodyColor');
+    gui.addColor(controlObject,'UpperColor');
+    gui.addColor(controlObject,'LowerColor');
+    gui.addColor(controlObject,'FeetColor');
 }
 
 function addStatsObject() {
@@ -259,19 +263,22 @@ function addStatsObject() {
 // Setup main game loop
 function gameLoop(): void {
     stats.update();
-
-    // cube.rotation.y += control.rotationSpeed;
-    // cube1.rotation.y += control.rotationSpeed;
-    // cube2.rotation.y += control.rotationSpeed;
-    // cube3.rotation.y += control.rotationSpeed;
-    // cube4.rotation.y += control.rotationSpeed;
-    // cube5.rotation.y += control.rotationSpeed;
-    // cube6.rotation.y += control.rotationSpeed;
-    // cube7.rotation.y += control.rotationSpeed;
-    // cube8.rotation.y += control.rotationSpeed;
-    group.rotation.y += control.rotationSpeedy;
-    group.rotation.x += control.rotationSpeedx;
-    group.rotation.z += control.rotationSpeedz;
+    //Rotation around all three axis
+    group.rotation.y += control.RotationXaxis;
+    group.rotation.x += control.RotationYaxis;
+    group.rotation.z += control.RotationZaxis;
+    
+    //assigning control object to each cube
+    cube.material.color = new Color(control.BodyColor);
+    cube1.material.color = new Color(control.BodyColor);
+    cube2.material.color = new Color(control.UpperColor);
+    cube3.material.color = new Color(control.BodyColor);
+    cube4.material.color = new Color(control.BodyColor);
+    cube5.material.color = new Color(control.LowerColor);
+    cube6.material.color = new Color(control.LowerColor);
+    cube7.material.color = new Color(control.BodyColor);
+    cube8.material.color = new Color(control.BodyColor);
+    
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
 	
@@ -293,9 +300,9 @@ function setupRenderer(): void {
 function setupCamera(): void {
     camera = new PerspectiveCamera(45, config.Screen.RATIO, 0.1, 1000);
     //camera = new PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.x = 31.2;
-    camera.position.y = 8.9;
-    camera.position.z = -6.68;
-    camera.lookAt(new Vector3(0, -1, 0));
+    camera.position.x = 47.55813;
+    camera.position.y = 30.19024;
+    camera.position.z = 0.95559;
+    camera.lookAt(new Vector3(0, -1, 1));
     console.log("Finished setting up Camera...");
 }

@@ -2,6 +2,13 @@
 
 // MAIN GAME FILE
 
+//Source file name      game.ts
+//Last Modified by      Vinay Bhardwaj
+//Date last Modified    February 5,2016
+//Program description   COMP392-Assignment 1-CubeMan    
+//Revision History      v10
+
+
 // THREEJS Aliases
 import Scene = THREE.Scene;
 import Renderer = THREE.WebGLRenderer;
@@ -89,7 +96,7 @@ function init() {
         new LambertMaterial({ color: 0xABE79F }),
         -2.5, -5.35, 0);
 
-    plane.rotation.x = -0.5 * Math.PI;
+    plane.rotation.x = -0.5 * Math.PI; //Plane Rotation
 
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
@@ -111,8 +118,7 @@ function init() {
     cube.position.x = 0.125;
     cube.position.y = 4.73;
     cube.position.z = 0.04;
-    group.add(cube);
-    // scene.add(cube);
+    group.add(cube); //Adding Cube to the group
     
     //Adding Neck
     cubeGeometry1 = new CubeGeometry(1, 1, 1);
@@ -122,8 +128,7 @@ function init() {
     cube1.position.x = -0.02;
     cube1.position.y = 3.3;
     cube1.position.z = 0.045;
-    group.add(cube1);
-    // scene.add(cube1);
+    group.add(cube1); //Adding Cube to the group
     
     
     //Adding Body
@@ -134,11 +139,10 @@ function init() {
     cube2.position.x = 0.06;
     cube2.position.y = 0.5;
     cube2.position.z = 0.01;
-    group.add(cube2);
-    // scene.add(cube2);
+    group.add(cube2); //Adding Cube to the group
     
     
-    //Adding left and right Arms
+    //Adding right arm
     cubeGeometry3 = new CubeGeometry(1.2, 0.8, 3.5);
     cube3 = new Mesh(cubeGeometry3, cubeMaterialSkin);
     cube3.castShadow = true;
@@ -146,9 +150,9 @@ function init() {
     cube3.position.x = -0.21;
     cube3.position.y = 2.6;
     cube3.position.z = -3.71;
-    group.add(cube3);
-    // scene.add(cube3);
+    group.add(cube3); //Adding Cube to the group
     
+    //Adding left arm
     cubeGeometry4 = new CubeGeometry(1.2, 0.8, 3.5);
     cube4 = new Mesh(cubeGeometry4, cubeMaterialSkin);
     cube4.castShadow = true;
@@ -156,10 +160,9 @@ function init() {
     cube4.position.x = -0.21;
     cube4.position.y = 2.6;
     cube4.position.z = 3.71;
-    group.add(cube4);
-    // scene.add(cube4);
+    group.add(cube4); //Adding Cube to the group
     
-    //Adding Legs
+    //Adding right leg
     cubeGeometry5 = new CubeGeometry(1,3,1);
     cube5 = new Mesh(cubeGeometry5, cubeMaterialLegs);
     cube5.castShadow = true;
@@ -167,9 +170,9 @@ function init() {
     cube5.position.x = -0.16;
     cube5.position.y = -3.5;
     cube5.position.z = -1.0;
-    group.add(cube5);
-    // scene.add(cube5);
+    group.add(cube5); //Adding Cube to the group
     
+    //Adding left leg
     cubeGeometry6 = new CubeGeometry(1,3,1);
     cube6 = new Mesh(cubeGeometry6, cubeMaterialLegs);
     cube6.castShadow = true;
@@ -177,10 +180,9 @@ function init() {
     cube6.position.x = -0.16;
     cube6.position.y = -3.5;
     cube6.position.z = 1.0;
-    group.add(cube6);
-    // scene.add(cube6);
+    group.add(cube6); //Adding Cube to the group
     
-    //Adding Feet
+    //Adding right feet
     cubeGeometry7 = new CubeGeometry(1.6,0.5,1);
     cube7 = new Mesh(cubeGeometry7, cubeMaterialFeet);
     cube7.castShadow = true;
@@ -188,9 +190,9 @@ function init() {
     cube7.position.x = 0.15;
     cube7.position.y = -4.95;
     cube7.position.z = -1.0;
-    group.add(cube7);
-    // scene.add(cube7);
+    group.add(cube7); //Adding Cube to the group
     
+    //Adding left feet
     cubeGeometry8 = new CubeGeometry(1.6,0.5,1);
     cube8 = new Mesh(cubeGeometry8, cubeMaterialFeet);
     cube8.castShadow = true;
@@ -198,11 +200,10 @@ function init() {
     cube8.position.x = 0.15;
     cube8.position.y = -4.95;
     cube8.position.z = 1.0;
-    group.add(cube8);
-    // scene.add(cube8);
+    group.add(cube8); //Adding Cube to the group
+    
     scene.add(group);
     console.log("Added Group to scene...");
-    
     
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x444444);
@@ -242,13 +243,13 @@ function onResize(): void {
 }
 
 function addControl(controlObject: Control): void {
-    gui.add(controlObject, 'RotationXaxis',-0.05,0.05);
-    gui.add(controlObject, 'RotationYaxis',-0.05,0.05);
-    gui.add(controlObject, 'RotationZaxis',-0.05,0.05);
-    gui.addColor(controlObject,'BodyColor');
-    gui.addColor(controlObject,'UpperColor');
-    gui.addColor(controlObject,'LowerColor');
-    gui.addColor(controlObject,'FeetColor');
+    gui.add(controlObject, 'RotationXaxis',-0.05,0.05); //Adding control for rotation around X-Axis
+    gui.add(controlObject, 'RotationYaxis',-0.05,0.05); //Adding control for rotation around Y-Axis
+    gui.add(controlObject, 'RotationZaxis',-0.05,0.05); //Adding control for rotation around Z-Axis
+    gui.addColor(controlObject,'BodyColor'); //Adding control for changing Face color
+    gui.addColor(controlObject,'UpperColor'); //Adding control for changing UpperBody color
+    gui.addColor(controlObject,'LowerColor'); //Adding control for changing Legs/Pants color
+    gui.addColor(controlObject,'FeetColor'); //Adding control for changing Feet/Shoes color
 }
 
 function addStatsObject() {
@@ -264,9 +265,9 @@ function addStatsObject() {
 function gameLoop(): void {
     stats.update();
     //Rotation around all three axis
-    group.rotation.y += control.RotationXaxis;
-    group.rotation.x += control.RotationYaxis;
-    group.rotation.z += control.RotationZaxis;
+    group.rotation.y += control.RotationXaxis; //Rotating the Group around Y-Azis
+    group.rotation.x += control.RotationYaxis; //Rotating the Group around X-Azis
+    group.rotation.z += control.RotationZaxis; //Rotating the Group around Z-Azis
     
     //assigning control object to each cube
     cube.material.color = new Color(control.BodyColor);
